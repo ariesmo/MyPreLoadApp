@@ -135,6 +135,7 @@ public class DataManagerService extends Service {
 //                Gunakan ini untuk insert query dengan menggunakan standar query
 
                 try {
+                    mahasiswaHelper.beginTransaction();
                     for (MahasiswaModel model : mahasiswaModels){
                         mahasiswaHelper.insertTransaction(model);
                         progress += progressDiff;
