@@ -137,15 +137,25 @@ public class DataManagerService extends Service {
                 try {
                     mahasiswaHelper.beginTransaction();
                     for (MahasiswaModel model : mahasiswaModels){
-                        mahasiswaHelper.insertTransaction(model);
-                        progress += progressDiff;
-                        publishProgress((int) progress);
+                        if(isCancelled()){
+                            break;
+                        } else {
+                            mahasiswaHelper.insertTransaction(model);
+                            progress += progressDiff;
+                            publishProgress((int) progress);
+                        }
+
                     }
+                    if (isCancelled()){
+                        isInsertSuccess = false;
+                        appPreference.setFirstRun(true);
+                        weakCallback.get().onLoadCancel();
+                    } else {
+                        mahasiswaHelper.setTransactionSuccess();
+                        isInsertSuccess = true;
 
-                    mahasiswaHelper.setTransactionSuccess();
-                    isInsertSuccess = true;
-
-                    appPreference.setFirstRun(false);
+                        appPreference.setFirstRun(false);
+                    }
                 } catch (Exception e){
 //                    Jika gagal maka do nothing
 
