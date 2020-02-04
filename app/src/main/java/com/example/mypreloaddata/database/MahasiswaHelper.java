@@ -60,10 +60,10 @@ public class MahasiswaHelper {
         Cursor cursor = database.query(TABLE_NAME, null, null, null, null, null, _ID + " ASC", null);
         cursor.moveToFirst();
         ArrayList<MahasiswaModel> arrayList = new ArrayList<>();
-        MahasiswaModel mahasiswaModel;
+
         if (cursor.getCount() > 0){
             do {
-                mahasiswaModel = new MahasiswaModel();
+                MahasiswaModel mahasiswaModel = new MahasiswaModel();
                 mahasiswaModel.setId(cursor.getInt(cursor.getColumnIndexOrThrow(_ID)));
                 mahasiswaModel.setName(cursor.getString(cursor.getColumnIndexOrThrow(NAMA)));
                 mahasiswaModel.setNim(cursor.getString(cursor.getColumnIndexOrThrow(NIM)));
@@ -82,10 +82,10 @@ public class MahasiswaHelper {
        Cursor cursor = database.query(TABLE_NAME, null, NAMA + " LIKE ?", new String[]{nama}, null, null, _ID + " ASC", null);
        cursor.moveToFirst();
        ArrayList<MahasiswaModel> arrayList = new ArrayList<>();
-       MahasiswaModel mahasiswaModel;
+
        if (cursor.getCount() > 0){
            do {
-               mahasiswaModel = new MahasiswaModel();
+               MahasiswaModel mahasiswaModel = new MahasiswaModel();
                mahasiswaModel.setId(cursor.getInt(cursor.getColumnIndexOrThrow(_ID)));
                mahasiswaModel.setName(cursor.getString(cursor.getColumnIndexOrThrow(NAMA)));
                mahasiswaModel.setNim(cursor.getString(cursor.getColumnIndexOrThrow(NIM)));

@@ -38,7 +38,8 @@ public class MahasiswaAdapter extends RecyclerView.Adapter<MahasiswaAdapter.Maha
 
     @Override
     public void onBindViewHolder(@NonNull MahasiswaHolder holder, int position) {
-
+        holder.textViewNim.setText(listMahasiswa.get(position).getNim());
+        holder.textViewNama.setText(listMahasiswa.get(position).getName());
     }
 
     @Override
