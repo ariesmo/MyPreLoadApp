@@ -98,14 +98,14 @@ public class MahasiswaHelper {
        return arrayList;
     }
 
-    public long insert(MahasiswaModel mahasiswaModel){
-        ContentValues initialValues = new ContentValues();
+//    public long insert(MahasiswaModel mahasiswaModel){
+//        ContentValues initialValues = new ContentValues();
 //        initialValues.put(_ID, String.valueOf(mahasiswaModel.getId()));
-        initialValues.put(_ID, mahasiswaModel.getId());
-        initialValues.put(NAMA, mahasiswaModel.getName());
-        initialValues.put(NIM, mahasiswaModel.getNim());
-        return database.insert(TABLE_NAME, null, initialValues);
-    }
+//        initialValues.put(_ID, mahasiswaModel.getId());
+//        initialValues.put(NAMA, mahasiswaModel.getName());
+//        initialValues.put(NIM, mahasiswaModel.getNim());
+//        return database.insert(TABLE_NAME, null, initialValues);
+//    }
 
     public void beginTransaction(){
         database.beginTransaction();
@@ -122,6 +122,7 @@ public class MahasiswaHelper {
     public void insertTransaction(MahasiswaModel mahasiswaModel){
         String sql = "INSERT INTO " + TABLE_NAME + " (" + NAMA + ", " + NIM + ") VALUES ( ?, ?)";
         SQLiteStatement stmt = database.compileStatement(sql);
+//        stmt.bindString(0, String.valueOf(mahasiswaModel.getId()));
         stmt.bindString(1, mahasiswaModel.getName());
         stmt.bindString(2, mahasiswaModel.getNim());
         stmt.execute();
